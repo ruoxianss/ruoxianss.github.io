@@ -807,6 +807,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/22/c-%E8%AF%BB%E5%8F%96bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%EF%BC%8C%E8%BF%9B%E8%A1%8C%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%BB%9F%E8%AE%A1%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%80%E5%80%BC%E3%80%81%E6%9C%9F%E6%9C%9B%E7%AD%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="若现">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/beichen.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ruo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/22/c-%E8%AF%BB%E5%8F%96bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%EF%BC%8C%E8%BF%9B%E8%A1%8C%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%BB%9F%E8%AE%A1%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%80%E5%80%BC%E3%80%81%E6%9C%9F%E6%9C%9B%E7%AD%89/" itemprop="url">c++读取bmp灰度图像，进行直方图统计，计算最值、期望等</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+             
+
+             
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-22T22:45:54+08:00">
+                2020-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          <!--
+          
+          -->
+
+          
+            <span class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                <span title="字数">
+                  774
+                </span>
+              
+
+              
+
+              
+            </span>
+          
+
+          <!-- 隐藏文章内标题下，内容描述
+          
+          -->
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>良好的开端是成功的一半（Well begun is half done）</p>
+<p>第一次用c++读取图片时，难为坏我玛卡巴卡了，分享一下代码，愿你有一个美好的学习体验</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	BITMAPFILEHEADER bmpFileHeader;<span class="comment">//文件头</span></span><br><span class="line">	BITMAPINFOHEADER bmpInfoHeader;<span class="comment">//信息头</span></span><br><span class="line">	RGBQUAD rgb[<span class="number">256</span>];<span class="comment">//颜色信息</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> *pData;<span class="comment">//定义指针</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"亲~~  只支持bmp8位灰度图像哟"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"哦！你这个愚蠢的土拨鼠 ，瞧瞧你说的话，简直就像隔壁的玛丽苏婶婶的蓝莓派一样糟糕，我发誓要揪掉你的头发，让你看起来像一个虔诚的冬瓜，我的老伙计！"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"_______________________________"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"开个玩笑"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入bmp图片所在路径，路径用 / 分隔 , 注意不要出现空格"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">char</span> filePath[<span class="number">200</span>];</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, filePath);</span><br><span class="line">	FILE *fp = fopen(filePath, <span class="string">"rb"</span>);</span><br><span class="line">	<span class="keyword">while</span> (!fp)</span><br><span class="line">	&#123;</span><br><span class="line">		getchar();</span><br><span class="line">		<span class="keyword">char</span> isCon;</span><br><span class="line">		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_GREEN);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"文件内容为空，是否重新输入路径,请输入[y/n]?"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;isCon);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (isCon==<span class="string">'y'</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入bmp图片所在路径，路径用 / 分隔 , 注意不要出现空格"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, filePath);</span><br><span class="line">			fp = fopen(filePath, <span class="string">"rb"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fread(&amp;bmpFileHeader, <span class="number">1</span>, <span class="keyword">sizeof</span>(BITMAPFILEHEADER), fp);</span><br><span class="line">	fread(&amp;bmpInfoHeader, <span class="number">1</span>, <span class="keyword">sizeof</span>(BITMAPINFOHEADER), fp);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (bmpInfoHeader.biBitCount == <span class="number">8</span>)<span class="comment">//每个像素所占的位数（bit）</span></span><br><span class="line">	&#123;</span><br><span class="line">		fread(rgb, <span class="number">256</span>, <span class="keyword">sizeof</span>(RGBQUAD), fp);<span class="comment">//数组名就是地址</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> length = bmpInfoHeader.biWidth * bmpInfoHeader.biHeight;</span><br><span class="line"></span><br><span class="line">	pData = <span class="keyword">new</span> <span class="keyword">unsigned</span> <span class="keyword">char</span>[length];</span><br><span class="line"></span><br><span class="line">	fread(pData, length, <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>), fp);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> grayTimes[<span class="number">256</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">double</span> grayFre[<span class="number">256</span>] = &#123; <span class="number">0.0</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> grayValue = <span class="keyword">int</span>(pData[i]);</span><br><span class="line">		sum = sum + grayValue;</span><br><span class="line">		grayTimes[grayValue]++;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//平均值</span></span><br><span class="line">	<span class="keyword">double</span> aver = <span class="keyword">double</span>(sum / (length));</span><br><span class="line"></span><br><span class="line">	<span class="comment">//最大值,最小值</span></span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">255</span>, <span class="built_in">min</span> = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"像素值"</span> &lt;&lt; <span class="string">"\t频数"</span> &lt;&lt; <span class="string">"\t频率"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">256</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		grayFre[i] = <span class="keyword">double</span>(grayTimes[i]) / <span class="keyword">double</span>(length);</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">"\t"</span> &lt;&lt; grayTimes[i] &lt;&lt; <span class="string">"\t"</span> &lt;&lt; fixed &lt;&lt; setprecision(<span class="number">15</span>) &lt;&lt; grayFre[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">256</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (grayTimes[i] != <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">min</span> = i;</span><br><span class="line">			i = <span class="number">255</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">255</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">		<span class="keyword">if</span> (grayTimes[i] != <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">max</span> = i;</span><br><span class="line">			i = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//期望</span></span><br><span class="line">	<span class="keyword">double</span> mean = <span class="number">0.0</span>;</span><br><span class="line">	<span class="keyword">double</span> mean2 = <span class="number">0.0</span>;</span><br><span class="line">	<span class="keyword">double</span> entropy = <span class="number">0.0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">256</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (grayTimes[i] != <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			mean += i * grayFre[i];</span><br><span class="line">			mean2 += i * i*grayFre[i];</span><br><span class="line">			entropy += - grayFre[i] * log2(grayFre[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//方差</span></span><br><span class="line">	<span class="keyword">double</span> variance = mean2 - mean * mean;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"_____________________"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"平均值为 ："</span> &lt;&lt; aver &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"最小灰度值为 ："</span> &lt;&lt; <span class="built_in">min</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"最大灰度值为 ："</span> &lt;&lt; <span class="built_in">max</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"期望为 ："</span> &lt;&lt; mean &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"方差为 ："</span> &lt;&lt; variance &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"熵为 ："</span> &lt;&lt; entropy &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">delete</span>[]pData;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果vs报错如下:</p>
+<h4 id="0x00007FF774EF28C8-处有未经处理的异常-在xxxx-exe-中-0xC00000FD-Stack-overflow-参数-0x0000000000000001"><a href="#0x00007FF774EF28C8-处有未经处理的异常-在xxxx-exe-中-0xC00000FD-Stack-overflow-参数-0x0000000000000001" class="headerlink" title="0x00007FF774EF28C8 处有未经处理的异常(在xxxx.exe 中): 0xC00000FD: Stack overflow (参数: 0x0000000000000001)"></a><strong>0x00007FF774EF28C8 处有未经处理的异常(在xxxx.exe 中): 0xC00000FD: Stack overflow (参数: 0x0000000000000001)</strong></h4><img src="/.com//20181014225402135.png" style="zoom: 67%;">
+
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法:"></a>解决办法:</h4><img src="/.com//20200422225827.png" style="zoom:67%;">
+
+<img src="/.com//20200422230111.png" style="zoom:67%;">
+
+<h4 id="如果还有问题的话，检查一下图片是不是像素为8位的bmp格式灰度图片"><a href="#如果还有问题的话，检查一下图片是不是像素为8位的bmp格式灰度图片" class="headerlink" title="如果还有问题的话，检查一下图片是不是像素为8位的bmp格式灰度图片"></a>如果还有问题的话，检查一下图片是不是像素为8位的bmp格式灰度图片</h4>
+          
+        
+      
+    </div>
+
+      <!-- 相关文章推荐 -->
+     
+
+    
+    
+    
+
+    <div>
+          
+    </div>
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/21/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1020,7 +1188,7 @@
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -1028,6 +1196,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
@@ -1077,6 +1254,10 @@
                 </div>
                 <ul class="links-of-blogroll-list">
                   
+                  
+                    <li class='my-links-of-blogroll-li'>
+                      <a href="/2020/04/22/c-%E8%AF%BB%E5%8F%96bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%EF%BC%8C%E8%BF%9B%E8%A1%8C%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%BB%9F%E8%AE%A1%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%80%E5%80%BC%E3%80%81%E6%9C%9F%E6%9C%9B%E7%AD%89/" title="c++读取bmp灰度图像，进行直方图统计，计算最值、期望等" target="_blank">c++读取bmp灰度图像，进行直方图统计，计算最值、期望等</a>
+                    </li>
                   
                     <li class='my-links-of-blogroll-li'>
                       <a href="/2020/04/21/hello-world/" title="Hello World" target="_blank">Hello World</a>
@@ -1394,6 +1575,17 @@
       <!-- 标签云 -->
       <!--
       
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+      <h3 class="widget-title">Tag Cloud</h3>
+      <div id="myCanvasContainer" class="widget tagcloud">
+          <canvas width="250" height="250" id="resCanvas" style="width=100%">
+              <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" rel="tag">图像处理</a><span class="tag-list-count">1</span></li></ul>
+          </canvas>
+      </div>
+      </div>
+      
       -->
       <!-- 标签云 -->
 
@@ -1421,7 +1613,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Site words total count">73</span>
+    <span title="Site words total count">847</span>
   
 </div>
 
@@ -2233,9 +2425,9 @@
   <!--
   <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
   -->
-<script src="https://player.lmih.cn/player/js/player.js" id="myhk" key="158756506583" m="1"></script>
+
  
-   
+    <script src="https://player.lmih.cn/player/js/player.js" id="myhk" key="158711254641" m="1"></script>
  
 
 <script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
