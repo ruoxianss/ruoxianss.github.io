@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Ruo</title>
+  <title>chuang</title>
   
-  <subtitle>学海无涯苦作舟</subtitle>
+  <subtitle>我真是个垃圾</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-06T13:04:12.586Z</updated>
+  <updated>2020-05-06T13:04:50.520Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2020/05/06/c-%E5%AF%B9bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%E8%BF%9B%E8%A1%8C%E5%83%8F%E7%B4%A0%E8%8C%83%E5%9B%B4%E6%8B%89%E4%BC%B8/"/>
     <id>http://yoursite.com/2020/05/06/c-%E5%AF%B9bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%E8%BF%9B%E8%A1%8C%E5%83%8F%E7%B4%A0%E8%8C%83%E5%9B%B4%E6%8B%89%E4%BC%B8/</id>
     <published>2020-05-06T13:01:44.000Z</published>
-    <updated>2020-05-06T13:04:12.586Z</updated>
+    <updated>2020-05-06T13:04:50.520Z</updated>
     
     <summary type="html">
     
