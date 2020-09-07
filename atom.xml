@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-07T14:42:39.854Z</updated>
+  <updated>2020-09-07T14:47:35.390Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,16 +21,11 @@
     <link href="http://yoursite.com/2020/05/06/c-%E5%AF%B9bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%E8%BF%9B%E8%A1%8C%E5%83%8F%E7%B4%A0%E8%8C%83%E5%9B%B4%E6%8B%89%E4%BC%B8/"/>
     <id>http://yoursite.com/2020/05/06/c-%E5%AF%B9bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%E8%BF%9B%E8%A1%8C%E5%83%8F%E7%B4%A0%E8%8C%83%E5%9B%B4%E6%8B%89%E4%BC%B8/</id>
     <published>2020-05-06T13:01:04.000Z</published>
-    <updated>2020-09-07T14:42:39.854Z</updated>
+    <updated>2020-09-07T14:47:35.390Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-
-&lt;div class=&quot;highlight-wrap&quot;autocomplete=&quot;off&quot; autocorrect=&quot;off&quot; autocapitalize=&quot;off&quot; spellcheck=&quot;false&quot; contenteditable=&quot;
-      
+      &lt;p&gt;使用c++对bmp灰度图像进行像素范围拉伸&lt;/p&gt;
     
     </summary>
     
