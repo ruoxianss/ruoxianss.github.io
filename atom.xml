@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-28T06:07:12.310Z</updated>
+  <updated>2020-11-26T10:19:08.630Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,51 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python安装Geopandas</title>
+    <link href="http://yoursite.com/2020/11/26/python%E5%AE%89%E8%A3%85Geopandas/"/>
+    <id>http://yoursite.com/2020/11/26/python%E5%AE%89%E8%A3%85Geopandas/</id>
+    <published>2020-11-26T09:53:17.000Z</published>
+    <updated>2020-11-26T10:19:08.630Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;Python直接使用命令安装Geopandas出现错误&quot;&gt;&lt;a href=&quot;#Python直接使用命令安装Geopandas出现错误&quot; class=&quot;headerlink&quot; title=&quot;Python直接使用命令安装Geopandas出现错误&quot;&gt;&lt;/a&gt;Pytho
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>windows命令</title>
+    <link href="http://yoursite.com/2020/11/11/windows%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2020/11/11/windows%E5%91%BD%E4%BB%A4/</id>
+    <published>2020-11-11T05:21:27.000Z</published>
+    <updated>2020-11-11T14:12:11.529Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;​        &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;如何查看ip地址&lt;/p&gt;
+&lt;div class=&quot;highlight-wrap&quot;autocomplete=&quot;off&quot; autocorrect=&quot;off&quot; autocapitalize=&quot;off&quot; spellcheck=&quot;f
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>NodeJS Postgres错误getaddrinfo ENOTFOUND(NodeJS Postgres error getaddrinfo ENOTFOUND)</title>
