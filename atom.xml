@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-11-26T10:19:08.630Z</updated>
+  <updated>2021-01-25T01:58:48.421Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>c++实现KNN算法</title>
+    <link href="http://yoursite.com/2021/01/25/c-%E5%AE%9E%E7%8E%B0KNN%E7%AE%97%E6%B3%95/"/>
+    <id>http://yoursite.com/2021/01/25/c-%E5%AE%9E%E7%8E%B0KNN%E7%AE%97%E6%B3%95/</id>
+    <published>2021-01-25T01:46:42.000Z</published>
+    <updated>2021-01-25T01:58:48.421Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;KNN，最近邻K个样本的类别决定位置样本的类别&lt;/p&gt;
+&lt;p&gt;使用c++简单实现，代码如下 &lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="-c++" scheme="http://yoursite.com/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
     <title>python安装Geopandas</title>
     <link href="http://yoursite.com/2020/11/26/python%E5%AE%89%E8%A3%85Geopandas/"/>
     <id>http://yoursite.com/2020/11/26/python%E5%AE%89%E8%A3%85Geopandas/</id>
     <published>2020-11-26T09:53:17.000Z</published>
-    <updated>2020-11-26T10:19:08.630Z</updated>
+    <updated>2020-11-26T10:19:51.352Z</updated>
     
     <summary type="html">
     
@@ -43,7 +63,7 @@
     <link href="http://yoursite.com/2020/11/11/windows%E5%91%BD%E4%BB%A4/"/>
     <id>http://yoursite.com/2020/11/11/windows%E5%91%BD%E4%BB%A4/</id>
     <published>2020-11-11T05:21:27.000Z</published>
-    <updated>2020-11-11T14:12:11.529Z</updated>
+    <updated>2020-11-26T10:19:51.353Z</updated>
     
     <summary type="html">
     
