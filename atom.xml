@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-01-25T01:58:48.421Z</updated>
+  <updated>2021-04-16T05:38:36.324Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MapServer请求平移缩放拖拽</title>
+    <link href="http://yoursite.com/2021/04/16/MapServer%E8%AF%B7%E6%B1%82%E5%B9%B3%E7%A7%BB%E7%BC%A9%E6%94%BE%E6%8B%96%E6%8B%BD/"/>
+    <id>http://yoursite.com/2021/04/16/MapServer%E8%AF%B7%E6%B1%82%E5%B9%B3%E7%A7%BB%E7%BC%A9%E6%94%BE%E6%8B%96%E6%8B%BD/</id>
+    <published>2021-04-16T05:30:02.000Z</published>
+    <updated>2021-04-16T05:38:36.324Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;请求Arcgis server发布的Mapserver图片&lt;/p&gt;
+&lt;p&gt;请求地址：&lt;a href=&quot;https://sampleserver6.arcgisonline.com/arcgis/rest/services/AGP/Census/MapServer&quot; targ
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>c++实现KNN算法</title>
