@@ -3,11 +3,11 @@
   <title>chuang</title>
   
   <subtitle>我真是个垃圾</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="/ruoxianer/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://ruoxianers.gitee.io/ruoxianer/"/>
   <updated>2021-04-17T06:06:19.835Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://ruoxianers.gitee.io/ruoxianer/</id>
   
   <author>
     <name>若现</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>FeatureServer请求下载geojson</title>
-    <link href="http://yoursite.com/2021/04/17/FeatureServer%E8%AF%B7%E6%B1%82%E4%B8%8B%E8%BD%BDgeojson/"/>
-    <id>http://yoursite.com/2021/04/17/FeatureServer%E8%AF%B7%E6%B1%82%E4%B8%8B%E8%BD%BDgeojson/</id>
+    <link href="https://ruoxianers.gitee.io/ruoxianer/2021/04/17/FeatureServer%E8%AF%B7%E6%B1%82%E4%B8%8B%E8%BD%BDgeojson/"/>
+    <id>https://ruoxianers.gitee.io/ruoxianer/2021/04/17/FeatureServer%E8%AF%B7%E6%B1%82%E4%B8%8B%E8%BD%BDgeojson/</id>
     <published>2021-04-17T06:04:10.000Z</published>
     <updated>2021-04-17T06:06:19.835Z</updated>
     
@@ -40,8 +40,8 @@
   
   <entry>
     <title>MapServer请求平移缩放拖拽</title>
-    <link href="http://yoursite.com/2021/04/16/MapServer%E8%AF%B7%E6%B1%82%E5%B9%B3%E7%A7%BB%E7%BC%A9%E6%94%BE%E6%8B%96%E6%8B%BD/"/>
-    <id>http://yoursite.com/2021/04/16/MapServer%E8%AF%B7%E6%B1%82%E5%B9%B3%E7%A7%BB%E7%BC%A9%E6%94%BE%E6%8B%96%E6%8B%BD/</id>
+    <link href="https://ruoxianers.gitee.io/ruoxianer/2021/04/16/MapServer%E8%AF%B7%E6%B1%82%E5%B9%B3%E7%A7%BB%E7%BC%A9%E6%94%BE%E6%8B%96%E6%8B%BD/"/>
+    <id>https://ruoxianers.gitee.io/ruoxianer/2021/04/16/MapServer%E8%AF%B7%E6%B1%82%E5%B9%B3%E7%A7%BB%E7%BC%A9%E6%94%BE%E6%8B%96%E6%8B%BD/</id>
     <published>2021-04-16T05:30:02.000Z</published>
     <updated>2021-04-16T05:38:58.497Z</updated>
     
@@ -61,8 +61,8 @@
   
   <entry>
     <title>c++实现KNN算法</title>
-    <link href="http://yoursite.com/2021/01/25/c-%E5%AE%9E%E7%8E%B0KNN%E7%AE%97%E6%B3%95/"/>
-    <id>http://yoursite.com/2021/01/25/c-%E5%AE%9E%E7%8E%B0KNN%E7%AE%97%E6%B3%95/</id>
+    <link href="https://ruoxianers.gitee.io/ruoxianer/2021/01/25/c-%E5%AE%9E%E7%8E%B0KNN%E7%AE%97%E6%B3%95/"/>
+    <id>https://ruoxianers.gitee.io/ruoxianer/2021/01/25/c-%E5%AE%9E%E7%8E%B0KNN%E7%AE%97%E6%B3%95/</id>
     <published>2021-01-25T01:46:42.000Z</published>
     <updated>2021-01-25T01:58:48.421Z</updated>
     
@@ -75,14 +75,14 @@
     
     
     
-      <category term="-c++" scheme="http://yoursite.com/tags/c/"/>
+      <category term="-c++" scheme="https://ruoxianers.gitee.io/ruoxianer/tags/c/"/>
     
   </entry>
   
   <entry>
     <title>python安装Geopandas</title>
-    <link href="http://yoursite.com/2020/11/26/python%E5%AE%89%E8%A3%85Geopandas/"/>
-    <id>http://yoursite.com/2020/11/26/python%E5%AE%89%E8%A3%85Geopandas/</id>
+    <link href="https://ruoxianers.gitee.io/ruoxianer/2020/11/26/python%E5%AE%89%E8%A3%85Geopandas/"/>
+    <id>https://ruoxianers.gitee.io/ruoxianer/2020/11/26/python%E5%AE%89%E8%A3%85Geopandas/</id>
     <published>2020-11-26T09:53:17.000Z</published>
     <updated>2020-11-26T10:19:51.352Z</updated>
     
@@ -97,14 +97,14 @@
     
     
     
-      <category term="python" scheme="http://yoursite.com/tags/python/"/>
+      <category term="python" scheme="https://ruoxianers.gitee.io/ruoxianer/tags/python/"/>
     
   </entry>
   
   <entry>
     <title>windows命令</title>
-    <link href="http://yoursite.com/2020/11/11/windows%E5%91%BD%E4%BB%A4/"/>
-    <id>http://yoursite.com/2020/11/11/windows%E5%91%BD%E4%BB%A4/</id>
+    <link href="https://ruoxianers.gitee.io/ruoxianer/2020/11/11/windows%E5%91%BD%E4%BB%A4/"/>
+    <id>https://ruoxianers.gitee.io/ruoxianer/2020/11/11/windows%E5%91%BD%E4%BB%A4/</id>
     <published>2020-11-11T05:21:27.000Z</published>
     <updated>2020-11-26T10:19:51.353Z</updated>
     
@@ -126,15 +126,15 @@
   
   <entry>
     <title>NodeJS Postgres错误getaddrinfo ENOTFOUND(NodeJS Postgres error getaddrinfo ENOTFOUND)</title>
-    <link href="http://yoursite.com/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/"/>
-    <id>http://yoursite.com/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/</id>
+    <link href="https://ruoxianers.gitee.io/ruoxianer/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/"/>
+    <id>https://ruoxianers.gitee.io/ruoxianer/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/</id>
     <published>2020-10-28T05:22:34.000Z</published>
     <updated>2020-10-28T06:07:12.310Z</updated>
     
     <summary type="html">
     
       &lt;h2 id=&quot;couldnot-connect-postgresql-Error-get-addrinfo-ENOTFOUND-postgres&quot;&gt;&lt;a href=&quot;#couldnot-connect-postgresql-Error-get-addrinfo-ENOTFOUND-postgres&quot; class=&quot;headerlink&quot; title=&quot;couldnot connect postgresql Error:get addrinfo ENOTFOUND postgres&quot;&gt;&lt;/a&gt;couldnot connect postgresql Error:get addrinfo ENOTFOUND postgres&lt;/h2&gt;&lt;p&gt;在使用Node连接Postgresql数据库时遇到了getaddrinfo ENOTFOUND的错误，提示couldnot connect postgresql Error:get addrinfo ENOTFOUND postgres错误，找不到主机地址。&lt;/p&gt;
-&lt;img src=&quot;/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/01.png&quot;&gt;
+&lt;img src=&quot;/ruoxianer/ruoxianer/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/01.png&quot;&gt;
 
 &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//引用pg模块&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; pg = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;pg&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// var conString = &quot;数据库类型://用户名:密码@服务器名称:端口号/数据库名称&quot;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; conString = &lt;span class=&quot;string&quot;&gt;&quot;postgres://postgres:123465?@localhost:5432/postgres&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; client = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; pg.Client(conString);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
@@ -147,16 +147,16 @@
     
     
     
-      <category term="node" scheme="http://yoursite.com/tags/node/"/>
+      <category term="node" scheme="https://ruoxianers.gitee.io/ruoxianer/tags/node/"/>
     
-      <category term="postgresql" scheme="http://yoursite.com/tags/postgresql/"/>
+      <category term="postgresql" scheme="https://ruoxianers.gitee.io/ruoxianer/tags/postgresql/"/>
     
   </entry>
   
   <entry>
     <title>c++对bmp灰度图像进行像素范围拉伸</title>
-    <link href="http://yoursite.com/2020/05/06/c-%E5%AF%B9bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%E8%BF%9B%E8%A1%8C%E5%83%8F%E7%B4%A0%E8%8C%83%E5%9B%B4%E6%8B%89%E4%BC%B8/"/>
-    <id>http://yoursite.com/2020/05/06/c-%E5%AF%B9bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%E8%BF%9B%E8%A1%8C%E5%83%8F%E7%B4%A0%E8%8C%83%E5%9B%B4%E6%8B%89%E4%BC%B8/</id>
+    <link href="https://ruoxianers.gitee.io/ruoxianer/2020/05/06/c-%E5%AF%B9bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%E8%BF%9B%E8%A1%8C%E5%83%8F%E7%B4%A0%E8%8C%83%E5%9B%B4%E6%8B%89%E4%BC%B8/"/>
+    <id>https://ruoxianers.gitee.io/ruoxianer/2020/05/06/c-%E5%AF%B9bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%E8%BF%9B%E8%A1%8C%E5%83%8F%E7%B4%A0%E8%8C%83%E5%9B%B4%E6%8B%89%E4%BC%B8/</id>
     <published>2020-05-06T13:01:04.000Z</published>
     <updated>2020-09-07T14:47:35.390Z</updated>
     
@@ -168,16 +168,16 @@
     
     
     
-      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
+      <category term="c++" scheme="https://ruoxianers.gitee.io/ruoxianer/tags/c/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="https://ruoxianers.gitee.io/ruoxianer/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>c++读取bmp灰度图像，进行直方图统计，计算最值、期望等</title>
-    <link href="http://yoursite.com/2020/04/22/c-%E8%AF%BB%E5%8F%96bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%EF%BC%8C%E8%BF%9B%E8%A1%8C%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%BB%9F%E8%AE%A1%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%80%E5%80%BC%E3%80%81%E6%9C%9F%E6%9C%9B%E7%AD%89/"/>
-    <id>http://yoursite.com/2020/04/22/c-%E8%AF%BB%E5%8F%96bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%EF%BC%8C%E8%BF%9B%E8%A1%8C%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%BB%9F%E8%AE%A1%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%80%E5%80%BC%E3%80%81%E6%9C%9F%E6%9C%9B%E7%AD%89/</id>
+    <link href="https://ruoxianers.gitee.io/ruoxianer/2020/04/22/c-%E8%AF%BB%E5%8F%96bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%EF%BC%8C%E8%BF%9B%E8%A1%8C%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%BB%9F%E8%AE%A1%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%80%E5%80%BC%E3%80%81%E6%9C%9F%E6%9C%9B%E7%AD%89/"/>
+    <id>https://ruoxianers.gitee.io/ruoxianer/2020/04/22/c-%E8%AF%BB%E5%8F%96bmp%E7%81%B0%E5%BA%A6%E5%9B%BE%E5%83%8F%EF%BC%8C%E8%BF%9B%E8%A1%8C%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%BB%9F%E8%AE%A1%EF%BC%8C%E8%AE%A1%E7%AE%97%E6%9C%80%E5%80%BC%E3%80%81%E6%9C%9F%E6%9C%9B%E7%AD%89/</id>
     <published>2020-04-22T14:45:54.000Z</published>
     <updated>2020-09-07T14:41:03.602Z</updated>
     
@@ -190,16 +190,16 @@
     
     
     
-      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
+      <category term="c++" scheme="https://ruoxianers.gitee.io/ruoxianer/tags/c/"/>
     
-      <category term="图像处理" scheme="http://yoursite.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+      <category term="图像处理" scheme="https://ruoxianers.gitee.io/ruoxianer/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2020/04/21/hello-world/"/>
-    <id>http://yoursite.com/2020/04/21/hello-world/</id>
+    <link href="https://ruoxianers.gitee.io/ruoxianer/2020/04/21/hello-world/"/>
+    <id>https://ruoxianers.gitee.io/ruoxianer/2020/04/21/hello-world/</id>
     <published>2020-04-21T07:10:35.463Z</published>
     <updated>2020-06-12T11:51:51.183Z</updated>
     
