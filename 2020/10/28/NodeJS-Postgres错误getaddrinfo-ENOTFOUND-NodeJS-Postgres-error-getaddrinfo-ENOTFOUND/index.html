@@ -105,18 +105,18 @@
 <meta name="description" content="couldnot connect postgresql Error:get addrinfo ENOTFOUND postgres在使用Node连接Postgresql数据库时遇到了getaddrinfo ENOTFOUND的错误，提示couldnot connect postgresql Error:get addrinfo ENOTFOUND postgres错误，找不到主机地址。   123">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NodeJS Postgres错误getaddrinfo ENOTFOUND(NodeJS Postgres error getaddrinfo ENOTFOUND)">
-<meta property="og:url" content="https://ruoxianers.gitee.io/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/index.html">
+<meta property="og:url" content="https://ruoxianers.gitee.io/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/index.html">
 <meta property="og:site_name" content="chuang">
 <meta property="og:description" content="couldnot connect postgresql Error:get addrinfo ENOTFOUND postgres在使用Node连接Postgresql数据库时遇到了getaddrinfo ENOTFOUND的错误，提示couldnot connect postgresql Error:get addrinfo ENOTFOUND postgres错误，找不到主机地址。   123">
-<meta property="og:image" content="https://ruoxianers.gitee.io/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/01.png">
-<meta property="og:image" content="https://ruoxianers.gitee.io/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/02.png">
+<meta property="og:image" content="https://ruoxianers.gitee.io/blog/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/01.png">
+<meta property="og:image" content="https://ruoxianers.gitee.io/blog/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/02.png">
 <meta property="article:published_time" content="2020-10-28T05:22:34.000Z">
 <meta property="article:modified_time" content="2020-10-28T06:07:12.310Z">
 <meta property="article:author" content="若现">
 <meta property="article:tag" content="node">
 <meta property="article:tag" content="postgresql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ruoxianers.gitee.io/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/01.png">
+<meta name="twitter:image" content="https://ruoxianers.gitee.io/blog/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/01.png">
 
 
 
@@ -146,7 +146,7 @@
 
 
 
-  <link rel="canonical" href="https://ruoxianers.gitee.io/2020/10/28/NodeJS-Postgres错误getaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/"/>
+  <link rel="canonical" href="https://ruoxianers.gitee.io/blog/2020/10/28/NodeJS-Postgres错误getaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/"/>
 
 
 
@@ -371,7 +371,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ruoxianers.gitee.io/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/">
+    <link itemprop="mainEntityOfPage" href="https://ruoxianers.gitee.io/blog/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="若现">
@@ -465,7 +465,7 @@
 
       
         <h2 id="couldnot-connect-postgresql-Error-get-addrinfo-ENOTFOUND-postgres"><a href="#couldnot-connect-postgresql-Error-get-addrinfo-ENOTFOUND-postgres" class="headerlink" title="couldnot connect postgresql Error:get addrinfo ENOTFOUND postgres"></a>couldnot connect postgresql Error:get addrinfo ENOTFOUND postgres</h2><p>在使用Node连接Postgresql数据库时遇到了getaddrinfo ENOTFOUND的错误，提示couldnot connect postgresql Error:get addrinfo ENOTFOUND postgres错误，找不到主机地址。</p>
-<img src="/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/01.png">
+<img src="/blog/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/01.png">
 
 <div class="highlight-wrap"autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true"data-rel="JAVASCRIPT"><figure class="iseeu highlight /javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引用pg模块</span></span><br><span class="line"><span class="keyword">var</span> pg = <span class="built_in">require</span>(<span class="string">'pg'</span>);</span><br><span class="line"><span class="comment">// var conString = "数据库类型://用户名:密码@服务器名称:端口号/数据库名称";</span></span><br><span class="line"><span class="keyword">var</span> conString = <span class="string">"postgres://postgres:123465?@localhost:5432/postgres"</span>;</span><br><span class="line"><span class="keyword">var</span> client = <span class="keyword">new</span> pg.Client(conString);</span><br></pre></td></tr></table></figure></div>
 
@@ -476,7 +476,7 @@
 <a id="more"></a>
 
 <h2 id="如何更改密码呢"><a href="#如何更改密码呢" class="headerlink" title="如何更改密码呢"></a>如何更改密码呢</h2><h3 id="1-SQL语句"><a href="#1-SQL语句" class="headerlink" title="1. SQL语句"></a>1. SQL语句</h3><p>这里不再展示</p>
-<h3 id="2-pgAdmin"><a href="#2-pgAdmin" class="headerlink" title="2. pgAdmin"></a>2. pgAdmin</h3><img src="/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/02.png">
+<h3 id="2-pgAdmin"><a href="#2-pgAdmin" class="headerlink" title="2. pgAdmin"></a>2. pgAdmin</h3><img src="/blog/blog/2020/10/28/NodeJS-Postgres%E9%94%99%E8%AF%AFgetaddrinfo-ENOTFOUND-NodeJS-Postgres-error-getaddrinfo-ENOTFOUND/02.png">
 
 <p>很简单就更改成功了，如果帮到大家了，还请多多支持。</p>
 
