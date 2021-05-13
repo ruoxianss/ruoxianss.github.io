@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>ArcGIS API for JavaScript Tutorials: Display your location</title>
+
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.19/"></script>
+
+
+    <script>
+        const apikey = "AAPKf989502c66b6481b8095b7e084f7f3beABVUBJXNRgPV7ZOxdyeeJ_pzGcb-gRbo89CGqTNelh4pZnShAYVKeFk6s8Z0M8oh";
+        require([
+            "esri/config",
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/widgets/Locate",
+            "esri/widgets/Track",
+            "esri/Graphic",
+            "esri/layers/FeatureLayer",
+            "esri/widgets/LayerList",
+            "esri/layers/MapImageLayer",
+            "esri/layers/TileLayer"
+
+        ], function(
+            esriConfig,
+            Map,
+            MapView,
+            Locate,
+            Track,
+            Graphic,
+            FeatureLayer,
+            LayerList,
+            MapImageLayer,
+            TileLayer
+        ) {
+
+            esriConfig.apiKey = apikey;
+
+            const map = new Map({
+                basemap: "arcgis-navigation"
+            });
+
+            const view = new MapView({
+                container: "viewDiv",
+                map: map,
+                center: [-40, 28],
+                zoom: 2
+            });
+
+            const track = new Track({
+                view: view,
+                graphic: new Graphic({
+                    symbol: {
+                        type: "simple-marker",
+                        size: "12px",
+                        color: "green",
+                        outline: {
+                            color: "#efefef",
+                            width: "1.5px"
+                        }
+                    }
+                }),
+                useHeadingEnabled: false
+            });
+            view.ui.add(track, "top-left");
+
+            const trailheadsLayer = new FeatureLayer({
+                url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/FeatureServer/0"
+            });
+            map.add(trailheadsLayer);
+
+            const trailsLayer = new FeatureLayer({
+                title: "layer map service",
+                url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/MapServer/0"
+            });
+
+            const agp = new MapImageLayer({
+                url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer"
+            })
+
+            let layer = new TileLayer({
+                url: "https://services.arcgisonline.com/arcgis/rest/services/World_Terrain_Base/MapServer"
+            });
+
+            map.add(trailsLayer, 0);
+            map.add(agp,0);
+            map.add(layer,0)
+
+
+            var layerList = new LayerList({
+                view: view
+            });
+            // Adds widget below other elements in the top left corner of the view
+            view.ui.add(layerList, {
+                position: "top-right"
+            });
+
+
+        });
+    </script>
+
+</head>
+<body>
+<div id="viewDiv"></div>
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
