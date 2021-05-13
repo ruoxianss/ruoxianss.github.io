@@ -91,13 +91,11 @@
                 url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer"
             })
 
-            let layer = new TileLayer({
-                url: "https://services.arcgisonline.com/arcgis/rest/services/World_Terrain_Base/MapServer"
-            });
+           
 
             map.add(trailsLayer, 0);
             map.add(agp,0);
-            map.add(layer,0)
+            
 
 
             var layerList = new LayerList({
