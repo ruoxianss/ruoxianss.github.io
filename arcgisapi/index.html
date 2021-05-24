@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>val</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,
+        body,
+        #viewDiv {
+            height: 100%;
+            width: 100%;
+        }
+        .custom-ui{
+            position: absolute;
+            top: 15px;
+            left: 60px;
+            text-align: center;
+        }
+        .scalebar{
+            font-size: 16px;
+            background-color: white;
+            margin-top: 20px;
+            padding: 0 5px;
+            font-family: 楷体;
+        }
+        .latlon{
+            font-size: 16px;
+            /*font-style: italic;*/
+            color: black;
+            background-color: white;
+            border-radius: 2%;
+            padding: 0 5px;
+            font-family: 楷体;
+        }
+        .iconfont{
+            cursor: pointer;
+        }
+
+        .iconfont:hover{
+            color: red;
+        }
+        #bridviewDiv{
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            border-radius: 5%;
+        }
+
+        #toggleviewDiv{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -100px;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.19/"></script>
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="fonts/iconfont.css">
+
+</head>
+<body>
+
+<div id="viewDiv">
+
+    <div class="custom-ui">
+        <div class="latlon"></div>
+        <div class="scalebar"></div>
+    </div>
+
+    <div class="esri-ui" style="inset: 0px;">
+        <div class="esri-ui-inner-container esri-ui-corner-container" style="inset: 15px 15px 30px;">
+            <div class="esri-ui-bottom-left esri-ui-corner">
+                <div class="esri-component esri-basemap-gallery esri-widget esri-widget--panel-height-only">
+                    <ul class="esri-basemap-gallery__item-container" role="menu">
+                        <li aria-selected="true" class="esri-basemap-gallery__item esri-basemap-gallery__item--selected" base-map="arcgis-navigation">
+                            <img alt="" class="esri-basemap-gallery__item-thumbnail" src="https://www.arcgis.com/sharing/rest/content/items/78c096abedb9498380f5db1922f96aa0/info/thumbnail/thumbnail1607388861033.jpeg?f=json">
+                            <div class="esri-basemap-gallery__item-title">Navigation</div>
+                        </li>
+                        <li aria-selected="false" class="esri-basemap-gallery__item" base-map="arcgis-imagery-standard">
+                            <img alt="" class="esri-basemap-gallery__item-thumbnail" src="https://www.arcgis.com/sharing/rest/content/items/c7d2b5c334364e8fb5b73b0f4d6a779b/info/thumbnail/thumbnail1607389529861.jpeg?f=json">
+                            <div class="esri-basemap-gallery__item-title">Imagery</div>
+                        </li>
+                        <li aria-selected="false" class="esri-basemap-gallery__item" base-map="arcgis-imagery">
+                            <img alt="" class="esri-basemap-gallery__item-thumbnail" src="https://www.arcgis.com/sharing/rest/content/items/ea3befe305494bb5b2acd77e1b3135dc/info/thumbnail/thumbnail1607389425104.jpeg?f=json">
+                            <div class="esri-basemap-gallery__item-title">Imagery Hybrid</div>
+                        </li>
+                        <li aria-selected="false" class="esri-basemap-gallery__item" base-map="arcgis-topographic">
+                            <img alt="" class="esri-basemap-gallery__item-thumbnail" src="https://www.arcgis.com/sharing/rest/content/items/dd247558455c4ffab54566901a14f42c/info/thumbnail/thumbnail1607389112065.jpeg?f=json">
+                            <div class="esri-basemap-gallery__item-title">Topographic</div>
+                        </li>
+                        <li aria-selected="false" class="esri-basemap-gallery__item" base-map="arcgis-streets">
+                            <img alt="" class="esri-basemap-gallery__item-thumbnail" src="https://www.arcgis.com/sharing/rest/content/items/e3e6df1d2f6a485d8a70f28fdd3ce19e/info/thumbnail/thumbnail1607389307240.jpeg?f=json">
+                            <div class="esri-basemap-gallery__item-title">Streets</div>
+                        </li>
+                        <li aria-selected="false" class="esri-basemap-gallery__item" base-map="arcgis-streets-relief">
+                            <img alt="" class="esri-basemap-gallery__item-thumbnail" src="https://www.arcgis.com/sharing/rest/content/items/03daad361e1849bc80cb7b70ed391379/info/thumbnail/thumbnail1607564881281.jpeg?f=json">
+                            <div class="esri-basemap-gallery__item-title">Streets (with Relief)</div>
+                        </li>
+                        <li aria-selected="false" class="esri-basemap-gallery__item" base-map="arcgis-streets-night">
+                            <img alt="" class="esri-basemap-gallery__item-thumbnail" src="https://www.arcgis.com/sharing/rest/content/items/b22e146f927e413c92f75b5e4614354a/info/thumbnail/thumbnail1607388481562.jpeg?f=json">
+                            <div class="esri-basemap-gallery__item-title">Streets (Night)</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="esri-ui-top-right esri-ui-corner">
+                <div class="esri-component esri-layer-list esri-widget esri-widget--panel">
+                    <ul aria-label="图层列表" data-group="root" class="esri-layer-list__list esri-layer-list__list--root esri-layer-list__list--independent">
+                        <li class="none-layer">无可显示图层</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="bridviewDiv"></div>
+<div id="toggleviewDiv"></div>
+
+<script>
+    const apikey = "AAPKf989502c66b6481b8095b7e084f7f3beABVUBJXNRgPV7ZOxdyeeJ_pzGcb-gRbo89CGqTNelh4pZnShAYVKeFk6s8Z0M8oh";
+
+
+
+    require(["esri/config", "esri/Map", "esri/Basemap","esri/views/MapView", "esri/layers/FeatureLayer", "esri/layers/MapImageLayer", "esri/layers/ImageryTileLayer", "esri/layers/TileLayer", "esri/geometry/Point", "esri/core/watchUtils"], function (esriConfig, Map, Basemap,MapView, FeatureLayer, MapImageLayer, ImageryTileLayer, TileLayer, Point, watchUtils) {
+        esriConfig.apiKey = apikey;
+
+        function CommonLayer({title, url}) {
+            let mapserver = /MapServer\/?\d?$/;
+            let featureserver = /FeatureServer\/?\d?$/
+            if (mapserver.test(url)) {
+                return new MapImageLayer({title, url})
+            } else if (featureserver.test(url)) {
+                console.log(title, 'FeatureLayer')
+                return new FeatureLayer({title, url})
+            }
+
+        }
+
+        //Map添加一个myadd方法
+        Map.prototype.myadd = function (layer) {
+            this.add(layer);
+            addLayer(layer.title);
+
+        }
+
+        //构造一个基本地图
+        // const basemap = new Basemap({
+        //     baseLayers: [
+        //         new TileLayer({
+        //             url: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer",
+        //             title: "Basemap"
+        //         })
+        //     ],
+        //     title: "basemap",
+        //     id: "basemap"
+        // });
+
+
+        //初始化地图
+        //底图
+        const map = new Map({
+            basemap: "arcgis-navigation"
+        });
+        const view = new MapView({
+            container: "viewDiv",
+            map: map,
+            center: [114, 34],
+            zoom: 2
+        });
+
+        //右小角小地图
+        const bridmap = new Map({
+            basemap: "arcgis-navigation"
+        });
+        const bridView = new MapView({
+            container: "bridviewDiv",
+            map: bridmap,
+            center: [114, 34],
+            zoom: 2,
+            constraints: {
+                // Disable zoom snapping to get the best synchronization
+                snapToZoom: false
+            }
+        });
+        bridView.ui.remove('zoom')
+        bridView.ui.remove('attribution')
+
+        //中间地图 点击可与底图切换
+        const togglemap = new Map({
+            basemap: "arcgis-imagery"
+        });
+        const toggleView = new MapView({
+            container: "toggleviewDiv",
+            map: togglemap,
+            center: [114, 34],
+            zoom: 2,
+            constraints: {
+                snapToZoom: false
+            }
+        })
+        toggleView.ui.remove('zoom')
+        toggleView.ui.remove('attribution')
+
+
+
+        //2.layerlist
+        const trailheadsLayer = CommonLayer({
+            title: "Earthquakes_Since1970",
+            url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/FeatureServer"
+        });
+
+
+
+        const trailsLayer = CommonLayer({
+            title: "layer map service",
+            url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/MapServer"
+        })
+
+
+        const agp = CommonLayer({
+            title: "census",
+            url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer"
+        })
+
+
+        const layer = new TileLayer({
+            title: 'tile',
+            url: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer"
+        });
+
+
+        map.myadd(trailheadsLayer);
+        map.myadd(agp);
+        map.myadd(trailsLayer)
+        map.myadd(layer);
+
+        layerList(map);
+
+
+        view.on("pointer-move", function (e) {
+            var p = new Point(e.x, e.y)
+            var p1 = view.toMap(p);
+            $(".latlon").html(`经度：${p1.longitude.toFixed(5)}，纬度：${p1.latitude.toFixed(5)}`);
+        });
+
+        view.watch("scale",function () {
+            $(".scalebar").html(`1:${view.scale}`)
+        })
+
+        const views = [view, bridView, toggleView];
+        let active;
+
+        const sync = (source) => {
+            if (!active || !active.viewpoint || active !== source) {
+                return;
+            }
+
+            for (const view of views) {
+                if (view !== active) {
+                    view.viewpoint = active.viewpoint;
+                }
+            }
+        };
+
+        for (const view of views) {
+            view.watch(["interacting", "animation"], () => {
+                active = view;
+                sync(active);
+            });
+            view.watch("viewpoint", () => sync(view));
+        }
+
+
+
+
+        //
+        toggleView.on("click", function () {
+            const temp = togglemap.basemap;
+            togglemap.basemap = map.basemap;
+            bridmap.basemap = map.basemap = temp;
+
+        });
+
+
+        //1.change map
+        let basemaps = document.getElementsByClassName("esri-basemap-gallery__item");
+
+        let currentIndex = 0;
+        for (let i = 0; i < basemaps.length; i++) {
+            basemaps[i].onclick = function () {
+                this.setAttribute("aria-selected", true);
+                this.className = "esri-basemap-gallery__item esri-basemap-gallery__item--selected";
+
+                bridmap.basemap = map.basemap = basemaps[i].getAttribute("base-map");
+                togglemap.basemap = "arcgis-imagery";
+                if (currentIndex !== i) {
+                    basemaps[currentIndex].setAttribute("aria-selected", false);
+                    basemaps[currentIndex].className = "esri-basemap-gallery__item";
+                    currentIndex = i;
+                }
+            }
+        }
+
+
+
+
+    });
+
+
+
+    function layerList(map) {
+        let layers = map.layers.items.slice(0);
+
+        let $items = $(".esri-layer-list__item-label");
+        $items.each(function (i) {
+            $(this).click(function () {
+                let $item = $(this);
+
+                let $eye = $(this).find(".esri-layer-list__item-toggle span");
+                let aria_checked = $item.attr("aria-checked");
+
+                let layer = map.layers.find(function (layer) {
+                    return layer === layers[i];
+                })
+                layer.visible = !layer.visible;
+
+                if (aria_checked === "true") {
+                    $eye.attr("class", "esri-icon-non-visible")
+                    $item.attr("aria-checked", "fasle");
+                } else {
+                    $eye.attr("class", "esri-icon-visible");
+                    $item.attr("aria-checked", "true");
+                }
+            })
+        })
+
+
+        //2.2 delete
+        $(".iconfont").each(function (i) {
+            $(this).click(function () {
+                $(this).parents(".esri-layer-list__item").remove();
+                map.remove(layers[i]);
+                let $list = $(".esri-layer-list__list");
+                let $lis = $(".esri-layer-list__list li")
+
+                if ($lis.length === 0) {
+                    let ele = `<li class="none-layer">无可显示图层</li>`
+                    $list.append(ele);
+                }
+            })
+        });
+    }
+
+
+    function addLayer(title) {
+        let element = `<li class="esri-layer-list__item">
+                        <div class="esri-layer-list__item-container">
+                            <div class="esri-layer-list__item-label" tabindex="0" aria-checked="true">
+                                <span class="esri-layer-list__item-toggle">
+                                    <span class="esri-icon-visible" aria-hidden="true"></span>
+                                </span>
+                                <span title=${title} aria-label=${title} class="esri-layer-list__item-title">${title}</span>
+
+                            </div>
+                            <span class="icon iconfont">&#xe621;</span>
+                        </div>
+                    </li>`
+
+        $(".esri-layer-list__list .none-layer").remove();
+        $(".esri-layer-list__list").append(element);
+    }
+
+</script>
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
