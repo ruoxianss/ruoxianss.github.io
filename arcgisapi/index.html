@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>val</title>
+    <title>gis3</title>
     <style>
         *{
             margin: 0;
@@ -10,11 +10,24 @@
             box-sizing: border-box;
         }
         html,
-        body,
-        #viewDiv {
+        body{
             height: 100%;
             width: 100%;
         }
+        #viewDiv {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+        }
+        #swipeviewDiv{
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+         }
         .custom-ui{
             position: absolute;
             top: 15px;
@@ -54,26 +67,40 @@
             border-radius: 5%;
         }
 
-        #toggleviewDiv{
-            width: 200px;
-            height: 200px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            margin-left: -100px;
-            margin-top: -100px;
+        .BMap_cpyCtrl ,.anchorBL{
+            display: none;
         }
+        .esri-layer-list__item .img-container {
+            overflow: hidden;
+            width: 42px;
+            height: 42px;
+            margin-left: 5px;
+            float: left;
+            border: 0.5px solid rgba(156, 149, 149, 0.5);
+            border-radius: 5%;
+        }
+        .esri-layer-list__item img{
+            /*width: 42px;*/
+            height: 40px;
+
+        }
+
+        .esri-swipe__container{
+            z-index: 999;
+        }
+
 
     </style>
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+    <link rel="stylesheet" href="fonts/iconfont.css">
     <script src="https://js.arcgis.com/4.19/"></script>
     <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-    <link rel="stylesheet" href="fonts/iconfont.css">
+
 
 </head>
 <body>
-
+<div id="swipeviewDiv"></div>
 <div id="viewDiv">
 
     <div class="custom-ui">
@@ -126,51 +153,40 @@
             </div>
         </div>
 
+
+        <div class="esri-ui-inner-container esri-ui-manual-container">
+            <div class="esri-component esri-popup" role="presentation"></div>
+            <div class="esri-component esri-swipe esri-widget esri-swipe--horizontal">
+                <div tabindex="0" touch-action="none" role="slider" title="拖动进行比较" aria-label="拖动进行比较" aria-orientation="horizontal" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" aria-valuetext="50%" class="esri-swipe__container" style="left: 100%;">
+                    <div role="presentation" class="esri-swipe__divider"></div>
+                    <div role="presentation" class="esri-swipe__handle">
+                        <span aria-hidden="true" class="esri-swipe__handle-icon esri-icon-drag-vertical"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="esri-component esri-spinner"></div>
+        </div>
     </div>
 
 </div>
 
+
+
 <div id="bridviewDiv"></div>
-<div id="toggleviewDiv"></div>
+
+
 
 <script>
     const apikey = "AAPKf989502c66b6481b8095b7e084f7f3beABVUBJXNRgPV7ZOxdyeeJ_pzGcb-gRbo89CGqTNelh4pZnShAYVKeFk6s8Z0M8oh";
 
-
-
-    require(["esri/config", "esri/Map", "esri/Basemap","esri/views/MapView", "esri/layers/FeatureLayer", "esri/layers/MapImageLayer", "esri/layers/ImageryTileLayer", "esri/layers/TileLayer", "esri/geometry/Point", "esri/core/watchUtils"], function (esriConfig, Map, Basemap,MapView, FeatureLayer, MapImageLayer, ImageryTileLayer, TileLayer, Point, watchUtils) {
+    require(["esri/config", "esri/Map", "esri/Basemap","esri/views/MapView", "esri/layers/FeatureLayer", "esri/layers/MapImageLayer", "esri/layers/ImageryTileLayer", "esri/layers/TileLayer", "esri/geometry/Point", "esri/layers/GraphicsLayer","esri/Graphic","esri/core/watchUtils"], function (esriConfig, Map, Basemap,MapView, FeatureLayer, MapImageLayer, ImageryTileLayer, TileLayer, Point, GraphicsLayer,Graphic,watchUtils) {
         esriConfig.apiKey = apikey;
-
-        function CommonLayer({title, url}) {
-            let mapserver = /MapServer\/?\d?$/;
-            let featureserver = /FeatureServer\/?\d?$/
-            if (mapserver.test(url)) {
-                return new MapImageLayer({title, url})
-            } else if (featureserver.test(url)) {
-                console.log(title, 'FeatureLayer')
-                return new FeatureLayer({title, url})
-            }
-
-        }
 
         //Map添加一个myadd方法
         Map.prototype.myadd = function (layer) {
             this.add(layer);
-            addLayer(layer.title);
-
+            addLayer(layer);
         }
-
-        //构造一个基本地图
-        // const basemap = new Basemap({
-        //     baseLayers: [
-        //         new TileLayer({
-        //             url: "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer",
-        //             title: "Basemap"
-        //         })
-        //     ],
-        //     title: "basemap",
-        //     id: "basemap"
-        // });
 
 
         //初始化地图
@@ -184,6 +200,19 @@
             center: [114, 34],
             zoom: 2
         });
+
+        const map1 = new Map({
+            basemap: "arcgis-navigation"
+        });
+        const swipeView = new MapView({
+            container: "swipeviewDiv",
+            map: map1,
+            center: [114, 34],
+            zoom: 2
+        });
+        swipeView.ui.remove('zoom')
+        swipeView.ui.remove('attribution')
+
 
         //右小角小地图
         const bridmap = new Map({
@@ -202,39 +231,23 @@
         bridView.ui.remove('zoom')
         bridView.ui.remove('attribution')
 
-        //中间地图 点击可与底图切换
-        const togglemap = new Map({
-            basemap: "arcgis-imagery"
-        });
-        const toggleView = new MapView({
-            container: "toggleviewDiv",
-            map: togglemap,
-            center: [114, 34],
-            zoom: 3,
-            constraints: {
-                snapToZoom: false
-            }
-        })
-        toggleView.ui.remove('zoom')
-        toggleView.ui.remove('attribution')
-
 
 
         //2.layerlist
-        const trailheadsLayer = CommonLayer({
+        const trailheadsLayer = new FeatureLayer({
             title: "Earthquakes_Since1970",
             url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/FeatureServer"
         });
 
 
 
-        const trailsLayer = CommonLayer({
+        const trailsLayer = new MapImageLayer({
             title: "layer map service",
             url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Earthquakes_Since1970/MapServer"
         })
 
 
-        const agp = CommonLayer({
+        const agp = new MapImageLayer({
             title: "census",
             url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer"
         })
@@ -251,12 +264,41 @@
         map.myadd(trailsLayer)
         map.myadd(layer);
 
-        layerList(map);
+
+        map.layers.items.forEach(layer => {
+            layer.when(function () {
+                if (layer instanceof MapImageLayer) {
+                    layer.fetchImage(layer.fullExtent, 160, 160).then(function (result) {
+                        let $item = $(`#${layer.id}`);
+                        console.log(result)
+                        $item.find("img").attr("src", result.src);
+                    });
+                }
+                else if (layer instanceof TileLayer) {
+                    layer.fetchTile(layer.minScale,0,0).then(function (result) {
+                        let $item = $(`#${layer.id}`);
+                        $item.find("img").attr("src", result.src);
+                    })
+
+                }else if (layer instanceof FeatureLayer) {
+                    view.whenLayerView(layer)
+                        .then(function(layerView) {
+                            watchUtils.whenFalseOnce(layerView,"updating",function () {
+                                return view.takeScreenshot({layers:[layer],width:320}).then(function (screenshot) {
+                                    console.log(screenshot)
+                                    let $item = $(`#${layer.id}`);
+                                    $item.find("img").attr("src", screenshot.dataUrl);
+                                })
+                            })
+                        })
+                }
+            })
+        });
 
 
         view.on("pointer-move", function (e) {
-            var p = new Point(e.x, e.y)
-            var p1 = view.toMap(p);
+            let p = new Point(e.x, e.y)
+            let p1 = view.toMap(p);
             $(".latlon").html(`经度：${p1.longitude.toFixed(5)}，纬度：${p1.latitude.toFixed(5)}`);
         });
 
@@ -264,7 +306,7 @@
             $(".scalebar").html(`1:${view.scale}`)
         })
 
-        const views = [view, bridView, toggleView];
+        const views = [view, bridView,swipeView];
         let active;
 
         const sync = (source) => {
@@ -289,16 +331,6 @@
 
 
 
-
-        //
-        toggleView.on("click", function () {
-            const temp = togglemap.basemap;
-            togglemap.basemap = map.basemap;
-            bridmap.basemap = map.basemap = temp;
-
-        });
-
-
         //1.change map
         let basemaps = document.getElementsByClassName("esri-basemap-gallery__item");
 
@@ -309,7 +341,6 @@
                 this.className = "esri-basemap-gallery__item esri-basemap-gallery__item--selected";
 
                 bridmap.basemap = map.basemap = basemaps[i].getAttribute("base-map");
-                togglemap.basemap = "arcgis-imagery";
                 if (currentIndex !== i) {
                     basemaps[currentIndex].setAttribute("aria-selected", false);
                     basemaps[currentIndex].className = "esri-basemap-gallery__item";
@@ -321,71 +352,91 @@
 
 
 
-    });
+        //2.layer manage
+        $(".esri-layer-list__item-label").click(function () {
+            let $item = $(this);
+            let aria_checked = $item.attr("aria-checked");
+            let $eye = $item.find(".esri-layer-list__item-toggle span");
+            if (aria_checked === "true") {
+                $eye.attr("class", "esri-icon-non-visible")
+                $item.attr("aria-checked", "fasle");
+            } else {
+                $eye.attr("class", "esri-icon-visible");
+                $item.attr("aria-checked", "true");
+            }
 
+            const id = $item.attr("label");
+            const layer = map.layers.find(function(layer) {
+                return layer.id === id;
+            });
+            layer.visible = !layer.visible;
 
-
-    function layerList(map) {
-        let layers = map.layers.items.slice(0);
-
-        let $items = $(".esri-layer-list__item-label");
-        $items.each(function (i) {
-            $(this).click(function () {
-                let $item = $(this);
-
-                let $eye = $(this).find(".esri-layer-list__item-toggle span");
-                let aria_checked = $item.attr("aria-checked");
-
-                let layer = map.layers.find(function (layer) {
-                    return layer === layers[i];
-                })
-                layer.visible = !layer.visible;
-
-                if (aria_checked === "true") {
-                    $eye.attr("class", "esri-icon-non-visible")
-                    $item.attr("aria-checked", "fasle");
-                } else {
-                    $eye.attr("class", "esri-icon-visible");
-                    $item.attr("aria-checked", "true");
-                }
-            })
         })
 
 
-        //2.2 delete
-        $(".iconfont").each(function (i) {
-            $(this).click(function () {
-                $(this).parents(".esri-layer-list__item").remove();
-                map.remove(layers[i]);
-                let $list = $(".esri-layer-list__list");
-                let $lis = $(".esri-layer-list__list li")
-
-                if ($lis.length === 0) {
-                    let ele = `<li class="none-layer">无可显示图层</li>`
-                    $list.append(ele);
-                }
-            })
-        });
-    }
+        $(".iconfont").click(function () {
+            let $item = $(this);
+            const id = $item.attr("label");
+            let layer = map.layers.find(function(layer) {
+                return layer.id === id;
+            });
+            map.remove(layer);
+            $item.parents(".esri-layer-list__item").remove();
+        })
 
 
-    function addLayer(title) {
-        let element = `<li class="esri-layer-list__item">
+        function addLayer(layer) {
+            const title = layer.title, id = layer.id;
+            let element = `<li class="esri-layer-list__item" id="${id}">
+                        <div class="img-container">
+                            <img crossorigin="anonymous" alt="">
+                        </div>
                         <div class="esri-layer-list__item-container">
-                            <div class="esri-layer-list__item-label" tabindex="0" aria-checked="true">
+                            <div class="esri-layer-list__item-label" tabindex="0" aria-checked="true" label="${id}">
                                 <span class="esri-layer-list__item-toggle">
                                     <span class="esri-icon-visible" aria-hidden="true"></span>
                                 </span>
                                 <span title=${title} aria-label=${title} class="esri-layer-list__item-title">${title}</span>
-
                             </div>
-                            <span class="icon iconfont">&#xe621;</span>
+                            <span class="icon iconfont" label="${id}">&#xe621;</span>
                         </div>
                     </li>`
 
-        $(".esri-layer-list__list .none-layer").remove();
-        $(".esri-layer-list__list").append(element);
-    }
+            $(".esri-layer-list__list .none-layer").remove();
+            $(".esri-layer-list__list").append(element);
+        }
+
+
+        var $body = $("body");
+        var $viewDiv = $("#viewDiv");
+        var $swipe = $(".esri-swipe__container")
+        $swipe.on("mousedown", function () {
+            console.log("mouseenter");
+            $body.on("mousemove", function (event) {
+                var left = event.pageX - $viewDiv.offset().left;
+                var l = left / $viewDiv.width() * 100 ;
+
+                var w = $swipe.offset().left + $swipe.width() + 2;
+                var h = $viewDiv.height();
+                var clip = `rect(0px,${w}px,${h}px,0px)`;
+                $swipe.css("left", `${l}%`);
+                $viewDiv.css("clip", clip);
+
+            });
+
+            $body.on("mouseup", function () {
+                $(this).off("mouseup");
+                $(this).off("mousemove");
+
+            });
+
+        });
+
+
+    });
+
+
+
 
 </script>
 <script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
