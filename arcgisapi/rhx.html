@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Intro to SceneView - Create a 3D map</title>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.19/"></script>
+    <script>
+        const apikey = "AAPKf989502c66b6481b8095b7e084f7f3beABVUBJXNRgPV7ZOxdyeeJ_pzGcb-gRbo89CGqTNelh4pZnShAYVKeFk6s8Z0M8oh";
+
+        require([
+            "esri/config",
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/widgets/Locate",
+            "esri/widgets/Track",
+            "esri/Graphic",
+            "esri/layers/FeatureLayer",
+            "esri/widgets/LayerList",
+            "esri/layers/MapImageLayer",
+            "esri/layers/TileLayer",
+            "esri/layers/GeoJSONLayer",
+            "esri/core/watchUtils"
+
+        ], function(
+            esriConfig,
+            Map,
+            MapView,
+            Locate,
+            Track,
+            Graphic,
+            FeatureLayer,
+            LayerList,
+            MapImageLayer,
+            TileLayer,
+            GeoJSONLayer,
+            watchUtils
+        ) {
+
+            esriConfig.apiKey = apikey;
+
+            const map = new Map({
+                basemap: "arcgis-imagery-standard",
+            });
+            const view = new MapView({
+                container: "viewDiv",
+                map: map,
+                center: [114.17, 34.78],
+                zoom:4
+            });
+
+            const layer = new GeoJSONLayer({
+                url: "https://ruoxianer.github.io/arcgisapi/geojson/china.geojson",
+                popupTemplate:{
+                    title: "{NAME}",
+                    content: [
+                        {
+                            type:"fields",
+                            filedInfos: [
+                                {
+                                    fieldName: "pop2000",
+                                    label: "pop2000",
+                                    format: {
+                                        digitSeparator: true,
+                                        places: 0
+                                    }
+                                }
+
+                            ]
+                        }
+                    ]
+                }
+            });
+
+            map.add(layer);  // adds the layer to the map
+        });
+
+    </script>
+</head>
+<body>
+<div id="viewDiv"></div>
+<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
