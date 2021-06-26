@@ -1,9 +1,12 @@
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>Intro to SceneView - Create a 3D map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>全国各省人口分布图|任行行</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.19/"></script>
+
     <style>
         html,
         body,
@@ -13,61 +16,41 @@
             height: 100%;
             width: 100%;
         }
-    </style>
-    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css" />
-    <script src="https://js.arcgis.com/4.19/"></script>
-    <script>
-        const apikey = "AAPKf989502c66b6481b8095b7e084f7f3beABVUBJXNRgPV7ZOxdyeeJ_pzGcb-gRbo89CGqTNelh4pZnShAYVKeFk6s8Z0M8oh";
 
+        #infoDiv {
+            padding: 8px;
+        }
+    </style>
+
+    <script>
         require([
-            "esri/config",
             "esri/Map",
             "esri/views/MapView",
-            "esri/widgets/Locate",
-            "esri/widgets/Track",
-            "esri/Graphic",
             "esri/layers/FeatureLayer",
-            "esri/widgets/LayerList",
-            "esri/layers/MapImageLayer",
-            "esri/layers/TileLayer",
             "esri/layers/GeoJSONLayer",
+            "esri/smartMapping/renderers/color",
+            "esri/smartMapping/statistics/histogram",
+            "esri/widgets/smartMapping/ClassedColorSlider",
+            "esri/widgets/Legend",
+            "esri/widgets/BasemapToggle",
             "esri/core/watchUtils"
-
         ], function(
-            esriConfig,
-            Map,
-            MapView,
-            Locate,
-            Track,
-            Graphic,
-            FeatureLayer,
-            LayerList,
-            MapImageLayer,
-            TileLayer,
-            GeoJSONLayer,
-            watchUtils
+            Map, MapView, FeatureLayer,GeoJSONLayer, colorRendererCreator, histogram,
+            ClassedColorSlider, Legend, BasemapToggle, watchUtils
         ) {
 
-            esriConfig.apiKey = apikey;
-
-            const map = new Map({
-                basemap: "arcgis-imagery-standard",
-            });
-            const view = new MapView({
-                container: "viewDiv",
-                map: map,
-                center: [114.17, 34.78],
-                zoom:4
-            });
+            let fieldSelect, classSelect, numClassesInput, slider;
 
             const layer = new GeoJSONLayer({
+                title: "全国各省人口分布",
                 url: "https://ruoxianer.github.io/arcgisapi/geojson/china.geojson",
-                popupTemplate:{
+                popupTemplate: {
+                    // autocast as esri/PopupTemplate
                     title: "{NAME}",
                     content: [
                         {
-                            type:"fields",
-                            filedInfos: [
+                            type: "fields",
+                            fieldInfos: [
                                 {
                                     fieldName: "pop2000",
                                     label: "pop2000",
@@ -75,19 +58,198 @@
                                         digitSeparator: true,
                                         places: 0
                                     }
+                                },
+                                {
+                                    fieldName: "pop2010",
+                                    label: "pop2010",
+                                    format: {
+                                        digitSeparator: true,
+                                        places: 0
+                                    }
+                                },
+                                {
+                                    fieldName: "pct2000",
+                                    label: "pct2000",
+                                    format: {
+                                        digitSeparator: true,
+                                        places: 0
+                                    }
+                                },
+                                {
+                                    fieldName: "pct2010",
+                                    label: "pct2010",
+                                    format: {
+                                        digitSeparator: true,
+                                        places: 0
+                                    }
+                                },
+                                {
+                                    fieldName: "shape_Area",
+                                    label: "Area",
+                                    format: {
+                                        digitSeparator: true,
+                                        places: 0
+                                    }
                                 }
-
                             ]
                         }
                     ]
-                }
+                },
             });
 
-            map.add(layer);  // adds the layer to the map
-        });
+            const map = new Map({
+                basemap: "gray-vector"
+            });
 
+            const view = new MapView({
+                container: "viewDiv",
+                map: map,
+                center: [114.17, 34.78],
+                zoom:4
+            });
+
+            // Set up UI elements
+
+            view.ui.add(
+                new Legend({
+                    view: view
+                }),
+                "bottom-left"
+            );
+
+            const basemapToggle = new BasemapToggle({
+                view: view,
+                nextBasemap: "national-geographic"
+            });
+            view.ui.add(basemapToggle, "bottom-right");
+            basemapToggle.on("toggle", generateRenderer);
+
+            view.ui.add("infoDiv", "top-right");
+
+            // Generate a new renderer each time the user changes an input parameter
+            view.when().then(function() {
+                fieldSelect = document.getElementById("field-select");
+                fieldSelect.addEventListener("change", generateRenderer);
+
+                classSelect = document.getElementById("class-select");
+                classSelect.addEventListener("change", generateRenderer);
+
+                numClassesInput = document.getElementById("num-classes");
+                numClassesInput.addEventListener("change", generateRenderer);
+
+                watchUtils.whenFalseOnce(view, "updating", generateRenderer);
+            });
+
+            // Generate rounded arcade expression when user
+            // selects a field name
+
+
+            function generateRenderer() {
+                const fieldLabel = fieldSelect.options[fieldSelect.selectedIndex].text;
+                console.log(fieldLabel)
+                console.log(fieldSelect.value)
+                // default to natural-breaks when manual is selected for classification method
+                const classificationMethod = classSelect.value === "manual" ? "natural-breaks" : classSelect.value;
+
+                const params = {
+                    layer: layer,
+                    field: fieldLabel,
+                    view: view,
+                    classificationMethod: classificationMethod,
+                    numClasses: parseInt(numClassesInput.value),
+                    legendOptions: {
+                        title: fieldLabel
+                    }
+                };
+
+                // generate the renderer and set it on the layer
+                colorRendererCreator.createClassBreaksRenderer(params).then(function(rendererResponse) {
+                    layer.renderer = rendererResponse.renderer;
+
+                    if (!map.layers.includes(layer)) {
+                        map.add(layer);
+                    }
+
+                    if(classSelect.value === "manual"){
+                        // if manual is selected, then add or update
+                        // a classed color slider to allow the user to
+                        // construct manual class breaks
+                        updateColorSlider(rendererResponse);
+                    } else {
+                        destroySlider();
+                    }
+
+                });
+            }
+
+            // If manual classification method is selected, then create
+            // a classed color slider to allow user to manually modify
+            // the class breaks starting with the generated renderer
+
+            function updateColorSlider(rendererResult){
+
+                histogram({
+                    layer: layer,
+                    valueExpression: getValueExpression(fieldSelect.value),
+                    view: view,
+                    numBins: 100
+                }).then(function(histogramResult){
+                    if(!slider){
+                        const sliderContainer = document.createElement("div");
+                        const container = document.createElement("div");
+                        container.id = "containerDiv";
+                        container.appendChild(sliderContainer);
+                        view.ui.add(container, "top-right");
+
+                        slider = ClassedColorSlider.fromRendererResult(rendererResult, histogramResult);
+                        slider.container = container;
+                        slider.viewModel.precision = 1;
+
+                        function changeEventHandler () {
+                            const renderer = layer.renderer.clone();
+                            renderer.classBreakInfos = slider.updateClassBreakInfos(renderer.classBreakInfos);
+                            layer.renderer = renderer;
+                        }
+
+                        slider.on(["thumb-change", "thumb-drag", "min-change", "max-change"], changeEventHandler);
+                    } else {
+                        slider.updateFromRendererResult(rendererResult, histogramResult);
+                    }
+                });
+
+            }
+
+            function destroySlider(){
+                if(slider){
+                    let container = document.getElementById("containerDiv");
+                    view.ui.remove(container);
+                    slider.container = null;
+                    slider = null;
+                    container = null;
+                }
+            }
+        });
     </script>
 </head>
+
 <body>
 <div id="viewDiv"></div>
+<div id="infoDiv" class="esri-widget">
+    Select Field:
+    <select id="field-select" class="esri-widget">
+        <option value="pop2000">pop2000</option>
+        <option value="pop2010" selected>pop2010</option>
+        <option value="pct2000">pct2000</option>
+        <option value="pct2010">pct2010</option>
+    </select>
+    Classification:
+    <select id="class-select" class="esri-widget">
+        <option value="equal-interval" selected>Equal interval</option>
+        <option value="quantile">Quantile</option>
+        <option value="natural-breaks">Natual Breaks</option>
+        <option value="manual">Manual</option>
+    </select>
+    Breaks:
+    <input type="number" id="num-classes" class="esri-widget" value="5" min="2" max="10" />
+</div>
 <script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
